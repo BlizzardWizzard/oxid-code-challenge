@@ -1,6 +1,6 @@
 {
   "name": "blizzard-wizzard/oxid-code-challenge",
-  "description": "description",
+  "description": "This is my attempt at OXID eSales's interview coding challenge.",
   "minimum-stability": "stable",
   "license": "GPL-2.0-only",
   "authors": [
