@@ -1,0 +1,16 @@
+{
+  "name": "blizzard-wizzard/oxid-code-challenge",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "GPL-2.0-only",
+  "authors": [
+    {
+      "name": "Jonathan Stechmann",
+      "email": "jonathanstechmann@pm.me"
+    }
+  ],
+  "require": {
+    "php": ">=8.3",
+    "phpunit/phpunit": "^11.1.3"
+  }
+}
