@@ -2,6 +2,8 @@
 
 interface DataSourceInterface
 {
+    public function __construct(string $data);
+
     /**
      * @return Currency[]
      */
