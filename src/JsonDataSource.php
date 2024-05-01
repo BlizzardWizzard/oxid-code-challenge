@@ -65,4 +65,12 @@ class JsonDataSource implements DataSourceInterface
 
         return $return;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getBaseCurrency(): Currency
+    {
+        return new Currency($this->baseCurrencyCode, 1);
+    }
 }
