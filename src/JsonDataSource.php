@@ -58,6 +58,11 @@ class JsonDataSource implements DataSourceInterface
      */
     public function getCurrencies(): array
     {
-        // TODO: Implement getCurrencies() method.
+        $return = [];
+        foreach ($this->exchangeRates as $code => $exchangeRate) {
+            $return[] = new Currency($code, $exchangeRate);
+        }
+
+        return $return;
     }
 }
