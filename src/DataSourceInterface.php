@@ -8,4 +8,9 @@ interface DataSourceInterface
      * @return Currency[]
      */
     public function getCurrencies(): array;
+
+    /**
+     * @return \Currency
+     */
+    public function getBaseCurrency(): Currency;
 }
