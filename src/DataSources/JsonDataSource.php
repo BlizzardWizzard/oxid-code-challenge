@@ -64,15 +64,19 @@ class JsonDataSource implements DataSourceInterface
      */
     public function getCurrencies(): array
     {
-        if (count($this->currencies) === 0) {
+        // do we have any currencies yet, and could we even make any?
+        if (count($this->currencies) === 0 && count($this->exchangeRates)) {
+            // don't have any currencies yet, but we have exchange rates -> let's make them
             $return = [];
             foreach ($this->exchangeRates as $code => $exchangeRate) {
                 $return[] = new Currency($code, $exchangeRate);
             }
 
+            // remember the currencies
             $this->currencies = $return;
         }
 
+        // return memoized currencies
         return $this->currencies;
     }
 
@@ -81,10 +85,13 @@ class JsonDataSource implements DataSourceInterface
      */
     public function getBaseCurrency(): Currency
     {
+        // do we already have this? don't have to do it again.
         if ($this->baseCurrency === null) {
+            // we don't, let's make it
             $this->baseCurrency = new Currency($this->baseCurrencyCode, 1);
         }
 
+        // return memoized base currency
         return $this->baseCurrency;
     }
 }
