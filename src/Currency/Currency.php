@@ -1,5 +1,7 @@
 <?php
 
+namespace currencyConverter\Currency;
+
 class Currency
 {
     private string $code;

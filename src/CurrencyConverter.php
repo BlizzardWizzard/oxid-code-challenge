@@ -1,10 +1,14 @@
 <?php
 
+namespace currencyConverter;
+
+use currencyConverter\Currency\Currency;
+
 class CurrencyConverter
 {
     /**
      * @param float     $amount the amount of base currency
-     * @param \Currency $currency the currency we want to convert to
+     * @param Currency $currency the currency we want to convert to
      *
      * @return float the resulting amount
      */

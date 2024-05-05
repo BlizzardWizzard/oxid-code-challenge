@@ -1,5 +1,8 @@
 <?php
 
+namespace currencyConverter\DataSources;
+use currencyConverter\Currency\Currency;
+
 interface DataSourceInterface
 {
     public function __construct(string $data);
@@ -10,7 +13,7 @@ interface DataSourceInterface
     public function getCurrencies(): array;
 
     /**
-     * @return \Currency
+     * @return \currencyConverter\Currency\Currency
      */
     public function getBaseCurrency(): Currency;
 }

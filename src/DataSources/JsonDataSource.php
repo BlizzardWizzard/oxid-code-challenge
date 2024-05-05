@@ -1,5 +1,10 @@
 <?php
 
+namespace currencyConverter\DataSources;
+
+use currencyConverter\Currency\Currency;
+use RuntimeException;
+
 class JsonDataSource implements DataSourceInterface
 {
     private string $baseCurrencyCode;
