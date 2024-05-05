@@ -3,8 +3,9 @@
 class JsonDataSource implements DataSourceInterface
 {
     private string $baseCurrencyCode;
-
+    private ?Currency $baseCurrency = null;
     private string $exchangeRates;
+    private array $currencies = [];
 
     /**
      * @param string $data
@@ -58,12 +59,16 @@ class JsonDataSource implements DataSourceInterface
      */
     public function getCurrencies(): array
     {
-        $return = [];
-        foreach ($this->exchangeRates as $code => $exchangeRate) {
-            $return[] = new Currency($code, $exchangeRate);
+        if (count($this->currencies) === 0) {
+            $return = [];
+            foreach ($this->exchangeRates as $code => $exchangeRate) {
+                $return[] = new Currency($code, $exchangeRate);
+            }
+
+            $this->currencies = $return;
         }
 
-        return $return;
+        return $this->currencies;
     }
 
     /**
@@ -71,6 +76,10 @@ class JsonDataSource implements DataSourceInterface
      */
     public function getBaseCurrency(): Currency
     {
-        return new Currency($this->baseCurrencyCode, 1);
+        if ($this->baseCurrency === null) {
+            $this->baseCurrency = new Currency($this->baseCurrencyCode, 1);
+        }
+
+        return $this->baseCurrency;
     }
 }
