@@ -14,6 +14,6 @@ class CurrencyConverter
      */
     public function convert(float $amount, Currency $currency): float
     {
-        return $amount * $currency->exchangeRate();
+        return $amount * $currency->getExchangeRate();
     }
 }

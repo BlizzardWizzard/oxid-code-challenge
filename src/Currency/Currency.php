@@ -27,7 +27,7 @@ class Currency
     /**
      * @return float factor of the exchange rate
      */
-    public function exchangeRate(): float
+    public function getExchangeRate(): float
     {
         return $this->exchangeRate;
     }
