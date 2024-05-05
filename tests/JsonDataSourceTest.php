@@ -68,7 +68,9 @@ class JsonDataSourceTest extends TestCase
         $this->assertCount(count($decodedJson['exchangeRates']), $currencies);
 
         // check that all the currencies have the right code/exchange rate combination
-        foreach ($currencies as $currency) {
+        foreach ($currencies as $code => $currency) {
+            $this->assertSame($code, $currency->getIso4217Code());
+
             $this->assertSame((float)$decodedJson['exchangeRates'][$currency->getIso4217Code()], $currency->getExchangeRate());
         }
     }
