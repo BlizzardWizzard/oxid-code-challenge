@@ -7,10 +7,10 @@ use RuntimeException;
 
 class JsonDataSource implements DataSourceInterface
 {
-    private string $baseCurrencyCode;
+    private string    $baseCurrencyCode;
     private ?Currency $baseCurrency = null;
-    private string $exchangeRates;
-    private array $currencies = [];
+    private array     $exchangeRates;
+    private array     $currencies   = [];
 
     /**
      * @param string $data
@@ -33,8 +33,8 @@ class JsonDataSource implements DataSourceInterface
         }
 
         // is the base currency a string?
-        if (!is_string($data['baseCurrency'])) {
-            throw new RuntimeException('Base currency code is not a string');
+        if (!is_string($data['baseCurrency']) || strlen($data['baseCurrency']) !== 3) {
+            throw new RuntimeException('Invalid currency code "' . $data['baseCurrency'] . '"');
         }
         // set the base currency
         $this->baseCurrencyCode = $data['baseCurrency'];
