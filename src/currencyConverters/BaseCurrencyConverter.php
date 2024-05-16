@@ -20,7 +20,7 @@ abstract class BaseCurrencyConverter implements CurrencyConverterInterface
      *
      * @return float[] the resulting amount, indexed by their ISO4217 code.
      */
-    protected function calculateAmounts(float $amount, Currency $currency): array
+    public function calculateAmounts(float $amount, Currency $currency): array
     {
         // convert to base currency amount
         $baseAmount = $currency->getExchangeRate() * $amount;
