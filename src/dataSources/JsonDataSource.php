@@ -1,8 +1,8 @@
 <?php
 
-namespace currencyConverter\DataSources;
+namespace currencyConverter\dataSources;
 
-use currencyConverter\Currency\Currency;
+use currencyConverter\currency\Currency;
 use RuntimeException;
 
 class JsonDataSource implements DataSourceInterface

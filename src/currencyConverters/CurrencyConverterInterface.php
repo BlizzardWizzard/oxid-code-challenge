@@ -1,9 +1,9 @@
 <?php
 
-namespace currencyConverter\CurrencyConverters;
+namespace currencyConverter\currencyConverters;
 
-use currencyConverter\Currency\Currency;
-use currencyConverter\DataSources\DataSourceInterface;
+use currencyConverter\currency\Currency;
+use currencyConverter\dataSources\DataSourceInterface;
 
 interface CurrencyConverterInterface
 {

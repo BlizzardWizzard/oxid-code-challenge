@@ -1,9 +1,9 @@
 <?php
 
-namespace currencyConverterTests\unit;
+namespace currencyConverterTests\unit\dataSources;
 
-use currencyConverter\Currency\Currency;
-use currencyConverter\DataSources\JsonDataSource;
+use currencyConverter\currency\Currency;
+use currencyConverter\dataSources\JsonDataSource;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;

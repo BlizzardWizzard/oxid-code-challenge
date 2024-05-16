@@ -1,8 +1,8 @@
 <?php
 
-namespace currencyConverter\CurrencyConverters;
+namespace currencyConverter\currencyConverters;
 
-use currencyConverter\Currency\Currency;
+use currencyConverter\currency\Currency;
 
 class CSVCurrencyConverter extends BaseCurrencyConverter
 {

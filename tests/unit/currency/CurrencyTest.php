@@ -1,8 +1,8 @@
 <?php
 
-namespace currencyConverterTests\unit;
+namespace currencyConverterTests\unit\currency;
 
-use currencyConverter\Currency\Currency;
+use currencyConverter\currency\Currency;
 use PHPUnit\Framework\TestCase;
 
 class CurrencyTest extends TestCase
