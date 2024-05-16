@@ -7,6 +7,7 @@ use currencyConverter\currency\Currency;
 class JsonCurrencyConverter extends BaseCurrencyConverter
 {
     /**
+     * @inheritDoc
      * @throws \JsonException
      */
     public function convert(float $amount, Currency $currency): string
