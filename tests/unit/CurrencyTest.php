@@ -1,6 +1,6 @@
 <?php
 
-namespace currencyConverterTests;
+namespace currencyConverterTests\unit;
 
 use currencyConverter\Currency\Currency;
 use PHPUnit\Framework\TestCase;
