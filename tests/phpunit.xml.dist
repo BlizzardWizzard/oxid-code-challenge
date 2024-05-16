@@ -1,3 +1,21 @@
 <?xml version="1.0"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.1/phpunit.xsd" backupGlobals="true" bootstrap="tests/bootstrap.php" cacheDirectory=".phpunit.cache" backupStaticProperties="false">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.1/phpunit.xsd"
+         backupGlobals="true"
+         bootstrap="tests/bootstrap.php"
+         cacheDirectory=".phpunit.cache"
+         backupStaticProperties="false"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="All tests">
+            <directory>tests</directory>
+        </testsuite>
+        <testsuite name="Unit tests">
+            <directory>tests/unit</directory>
+        </testsuite>
+        <testsuite name="Integration tests">
+            <directory>tests/integration</directory>
+        </testsuite>
+    </testsuites>
 </phpunit>
