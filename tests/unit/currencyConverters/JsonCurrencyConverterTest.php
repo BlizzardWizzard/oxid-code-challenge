@@ -14,12 +14,15 @@ class JsonCurrencyConverterTest extends TestCase
      */
     public static function jsonDataProvider(): array
     {
-        return [[new JsonDataSource(file_get_contents('./../../data/testdata.json'))]];
+        return [[new JsonDataSource(file_get_contents('./data/testdata.json'))]];
     }
 
+    /**
+     * @throws \JsonException
+     */
     public static function convertProvider(): array
     {
-        $datasource = new JsonDataSource(file_get_contents('./../../data/testdata.json'));
+        $datasource = new JsonDataSource(file_get_contents('./data/testdata.json'));
 
         return [
             [
