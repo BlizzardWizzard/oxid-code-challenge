@@ -22,12 +22,18 @@ abstract class BaseCurrencyConverter implements CurrencyConverterInterface
      */
     final public function calculateAmounts(float $amount, Currency $currency): array
     {
+        // factor for turning base amount into something we can use with integer operations
+        // after multiplying with this factor, 0.0001 of a currency is 1.
+        $factorForIntegerOperations = 100000;
+
+
         // convert to base currency amount
-        $baseAmount = $currency->getExchangeRate() * $amount;
+        $baseAmount = $currency->getExchangeRate() * $amount * $factorForIntegerOperations;
 
         $returnArr = [];
         foreach ($this->dataSource->getCurrencies() as $iso4217Code => $dataSourceCurrency) {
-            $returnArr[$iso4217Code] = $baseAmount * $dataSourceCurrency->getExchangeRate();
+            // these should only be an integer operations, as the currency with the most decimal places has 4 decimal places
+            $returnArr[$iso4217Code] = ($baseAmount * $dataSourceCurrency->getExchangeRate()) / $factorForIntegerOperations;
         }
 
         return $returnArr;
