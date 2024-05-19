@@ -28,7 +28,7 @@ abstract class BaseCurrencyConverter implements CurrencyConverterInterface
 
 
         // multiply by $factorForIntegerOperations and convert to base currency amount
-        $baseAmount = ($amount * $factorForIntegerOperations) * $currency->getExchangeRate();
+        $baseAmount = ($amount * $factorForIntegerOperations) / $currency->getExchangeRate();
 
         $returnArr = [];
         foreach ($this->dataSource->getCurrencies() as $iso4217Code => $dataSourceCurrency) {
