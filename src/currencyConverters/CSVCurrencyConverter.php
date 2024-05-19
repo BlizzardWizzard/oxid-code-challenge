@@ -10,10 +10,18 @@ class CSVCurrencyConverter extends BaseCurrencyConverter
     {
         // create a csv file
         $filename = uniqid('csv-currency-converter-', true) . '.csv';
-        $file = fopen(sys_get_temp_dir() . $filename, 'wb');
+        $file = fopen(sys_get_temp_dir() . DIRECTORY_SEPARATOR . $filename, 'w+b');
+
+        // get the calculated amounts
+        $calculatedAmounts = $this->calculateAmounts($amount, $currency);
 
         // write the calculated amounts to the file
-        fputcsv($file, $this->calculateAmounts($amount, $currency));
+        foreach ($calculatedAmounts as $key => $calculatedAmount) {
+            fputcsv($file, [$key, $calculatedAmount]);
+        }
+
+        // reset the file pointer to the beginning of the file
+        rewind($file);
 
         // get the file as a string
         $return = stream_get_contents($file);
@@ -21,7 +29,7 @@ class CSVCurrencyConverter extends BaseCurrencyConverter
         // close the file
         fclose($file);
         // delete the file
-        unlink(sys_get_temp_dir() . $filename);
+        unlink(sys_get_temp_dir() . DIRECTORY_SEPARATOR . $filename);
 
         // return csv string
         return $return;
