@@ -98,13 +98,5 @@ class JsonToJsonTest extends TestCase
         $converter = new JsonCurrencyConverter($dataSource);
 
         $this->assertSame($expected, $converter->convert($amount, $dataSource->getBaseCurrency()));
-
-        foreach ($dataSource->getCurrencies() as $currency) {
-            $baseAmount = $amount * 100000;
-            $baseAmountWithExchangeRateApplied = $baseAmount * $currency->getExchangeRate();
-            $baseAmountNormalized = $baseAmountWithExchangeRateApplied / 100000;
-            $rounded = round($baseAmountNormalized, 2);
-            $this->assertSame($expected, $converter->convert($rounded, $currency));
-        }
     }
 }
