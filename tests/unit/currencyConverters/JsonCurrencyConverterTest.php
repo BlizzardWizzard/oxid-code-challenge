@@ -116,9 +116,10 @@ class JsonCurrencyConverterTest extends TestCase
     #[DataProvider('jsonDataProvider')]
     public function test__construct(JsonDataSource $dataSource): void
     {
-
+        // create JsonCurrencyConverter
         $obj = new JsonCurrencyConverter($dataSource);
 
+        // did this actually create an instance of JsonCurrencyConverter?
         $this->assertInstanceOf(JsonCurrencyConverter::class, $obj);
     }
 
@@ -128,6 +129,7 @@ class JsonCurrencyConverterTest extends TestCase
     #[DataProvider('convertProvider')]
     public function testConvert($amount, $dataSource, $expected): void
     {
+        // check whether the conversion does what it should
         $this->assertSame($expected, (new JsonCurrencyConverter($dataSource))->convert($amount, $dataSource->getBaseCurrency()));
     }
 }

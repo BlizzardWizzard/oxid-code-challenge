@@ -24,6 +24,7 @@ abstract class BaseCurrencyConverter implements CurrencyConverterInterface
     {
         // factor for turning base amount into something we can use with integer operations
         // after multiplying with this factor, 0.000001 of a currency is 1.
+        // unless someone tries to convert something bigger than 9E12, we're probably not going to run into the integer limit.
         $factorForIntegerOperations = 100000;
 
 
@@ -32,7 +33,7 @@ abstract class BaseCurrencyConverter implements CurrencyConverterInterface
 
         $returnArr = [];
         foreach ($this->dataSource->getCurrencies() as $iso4217Code => $dataSourceCurrency) {
-            // these should only be an integer operations, as the currency with the most decimal places has 4 decimal places
+            // multiply the base amount times the exchange rate of $dataSourceCurrency, then divide by $factorForIntegerOperations, so we get the actual number.
             $returnArr[$iso4217Code] = ($baseAmount * $dataSourceCurrency->getExchangeRate()) / $factorForIntegerOperations;
         }
 

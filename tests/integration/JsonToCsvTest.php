@@ -161,10 +161,13 @@ CNY,23
     #[DataProvider('convertProvider')]
     public function testJsonToCSVBaseCurrency($amount, $expected): void
     {
+        // create a JsonDataSource
         $dataSource = new JsonDataSource(file_get_contents('./data/testdata.json'));
 
+        // create a CSVCurrencyConverter
         $converter = new CSVCurrencyConverter($dataSource);
 
+        // test if the conversion does what it should
         $this->assertSame($expected, $converter->convert($amount, $dataSource->getBaseCurrency()));
     }
 }

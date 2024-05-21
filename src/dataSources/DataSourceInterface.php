@@ -15,6 +15,7 @@ interface DataSourceInterface
     public function getCurrencies(): array;
 
     /**
+     * returns the base currency of this data source.
      * @return \currencyConverter\currency\Currency
      */
     public function getBaseCurrency(): Currency;

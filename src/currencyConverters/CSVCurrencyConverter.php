@@ -6,6 +6,9 @@ use currencyConverter\currency\Currency;
 
 class CSVCurrencyConverter extends BaseCurrencyConverter
 {
+    /**
+     * @inheritDoc
+     */
     public function convert(float $amount, Currency $currency): string
     {
         // create a csv file
@@ -28,6 +31,7 @@ class CSVCurrencyConverter extends BaseCurrencyConverter
 
         // close the file
         fclose($file);
+
         // delete the file
         unlink(sys_get_temp_dir() . DIRECTORY_SEPARATOR . $filename);
 

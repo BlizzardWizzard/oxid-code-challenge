@@ -93,10 +93,13 @@ class JsonToJsonTest extends TestCase
     #[DataProvider('convertProvider')]
     public function testJsonToJson($amount, $expected): void
     {
+        // create a JsonDataSource
         $dataSource = new JsonDataSource(file_get_contents('./data/testdata.json'));
 
+        // create a JsonCurrencyConverter
         $converter = new JsonCurrencyConverter($dataSource);
 
+        // test if the conversion does what it should
         $this->assertSame($expected, $converter->convert($amount, $dataSource->getBaseCurrency()));
     }
 }

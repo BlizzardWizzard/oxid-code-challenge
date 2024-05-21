@@ -32,7 +32,7 @@ class JsonDataSource implements DataSourceInterface
             throw new RuntimeException('Data does not contain base currency');
         }
 
-        // is the base currency a string?
+        // is the base currency code a 3-letter string?
         if (!is_string($data['baseCurrency']) || strlen($data['baseCurrency']) !== 3) {
             throw new RuntimeException('Invalid currency code "' . $data['baseCurrency'] . '"');
         }
@@ -56,6 +56,8 @@ class JsonDataSource implements DataSourceInterface
                 throw new RuntimeException('Invalid exchange rate factor "' . $exchangeRate . '"');
             }
         }
+
+        // set the validated exchange rates as the exchange rates of this data source
         $this->exchangeRates = $data['exchangeRates'];
     }
 

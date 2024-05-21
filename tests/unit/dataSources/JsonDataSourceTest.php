@@ -30,6 +30,7 @@ class JsonDataSourceTest extends TestCase
     #[DataProvider('jsonDataProvider')]
     public function testConstruct(string $testData): void
     {
+        // check if constructor constructs things
         $this->assertInstanceOf(JsonDataSource::class, new JsonDataSource($testData));
     }
 
@@ -39,6 +40,7 @@ class JsonDataSourceTest extends TestCase
     #[DataProvider('badJsonDataProvider')]
     public function testConstructWithBadData(string $badData): void
     {
+        // check if constructor doesn't construct things when it shouldn't
         $this->expectException(RuntimeException::class);
 
         new JsonDataSource($badData);
@@ -50,12 +52,14 @@ class JsonDataSourceTest extends TestCase
     #[DataProvider('jsonDataProvider')]
     public function testJsonDataSource(string $testData): void
     {
+        // decode test data
         $decodedJson = json_decode($testData, true, 512, JSON_THROW_ON_ERROR);
 
 
+        // create new JsonDataSource
         $dataSource = new JsonDataSource($testData);
 
-        // base currency?
+        // do we have a base currency?
         $this->assertEquals(new Currency($decodedJson['baseCurrency'], 1), $dataSource->getBaseCurrency());
 
         // get all currencies

@@ -184,8 +184,10 @@ CNY,23
     #[DataProvider('jsonDataProvider')]
     public function test__construct(JsonDataSource $dataSource): void
     {
+        // create CSVCurrencyConverter
         $obj = new CSVCurrencyConverter($dataSource);
 
+        // did this actually create an instance of CSVCurrencyConverter?
         $this->assertInstanceOf(CSVCurrencyConverter::class, $obj);
     }
 
@@ -195,6 +197,7 @@ CNY,23
     #[DataProvider('convertProvider')]
     public function testConvert($amount, $dataSource, $expected): void
     {
+        // check whether the conversion does what it should
         $this->assertSame($expected, (new CSVCurrencyConverter($dataSource))->convert($amount, $dataSource->getBaseCurrency()));
     }
 }
