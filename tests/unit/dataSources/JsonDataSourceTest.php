@@ -20,7 +20,7 @@ class JsonDataSourceTest extends TestCase
     public static function badJsonDataProvider(): array
     {
         return [
-            [file_get_contents('./data/badtestdata.json')]
+            [file_get_contents('./data/brokentestdata.json')]
         ];
     }
 
