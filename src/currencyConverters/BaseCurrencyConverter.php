@@ -23,7 +23,7 @@ abstract class BaseCurrencyConverter implements CurrencyConverterInterface
     final public function calculateAmounts(float $amount, Currency $currency): array
     {
         // factor for turning base amount into something we can use with integer operations
-        // after multiplying with this factor, 0.0001 of a currency is 1.
+        // after multiplying with this factor, 0.000001 of a currency is 1.
         $factorForIntegerOperations = 100000;
 
 
